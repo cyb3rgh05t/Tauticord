@@ -9,7 +9,7 @@ import modules.tautulli_connector as tautulli
 from modules import config_parser
 from modules.logs import *
 
-config = config_parser.Config(app_name="Tauticord", config_path="config.yaml")
+config = config_parser.Config(app_name="Tauticord", config_path="config/config.yaml")
 
 analytics = GoogleAnalytics(analytics_id='UA-174268200-2',
                             anonymous_ip=True,
