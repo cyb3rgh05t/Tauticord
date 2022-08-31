@@ -56,32 +56,11 @@ Run the script with the following command:
 	python3 Tauticord.py
 	
 # Docker
-You can also run Tauticord as a Docker container. The Dockerfile is included in this repository, or can be pulled from [Docker Hub](https://hub.docker.com/r/nwithan8/tauticord).
+You can also run Tauticord as a Docker container.
 
-You will need to set the following environment variables:
-
-| Environment Variable            | Value                                                          | Example/Default                      |
-|---------------------------------|----------------------------------------------------------------|--------------------------------------|
-| TC_TAUTULLI_URL (required)      | IP of your Tautulli server                                     | http://192.168.1.x:8181              |
-| TC_TAUTULLI_KEY (required)      | API key for Tautulli server                                    | abcd1234efgh5678ijkl9012mnop3456qrst |
-| TC_PLEX_PASS                    | Enable PlexPass Features                                       | "False"                              |
-| TC_REFRESH_SECONDS              | Seconds between updates                                        | 15                                   |
-| TC_TERMINATE_MESSAGE            | Message sent to users when a stream is killed                  | "Your stream has ended."             |
-| TC_USE_24_HOUR_TIME             | Whether to display times in 24-hour time                       | "False"                              |
-| TC_VC_STREAM_COUNT              | Whether to display current stream count in a voice channel     | "False"                              |
-| TC_VC_TRANSCODE_COUNT           | Whether to display current transcode count in a voice channel  | "False"                              |
-| TC_VC_BANDWIDTH                 | Whether to display current bandwidth in a voice channel        | "False"                              |
-| TC_VC_LOCAL_BANDWIDTH           | Whether to display current local bandwidth in a voice channel  | "False"                              |
-| TC_VC_REMOTE_BANDWIDTH          | Whether to display current remote bandwidth in a voice channel | "False"                              |
-| TC_VC_LIBRARY_STATS             | Whether to display library statistics in voice channels        | "False"                              |
-| TC_VC_LIBRARY_NAMES             | Comma-separated list of libraries to display statistics of     | "Movies,TV Shows,Music"              |       
-| TC_DISCORD_BOT_TOKEN (required) | Discord Bot Token                                              | <key from DiscordApplication above > |
-| TC_DISCORD_SERVER_ID (required) | Discord Server ID                                              | <ID, right-click server>             |
-| TC_DISCORD_OWNER_ID             | Your Discord ID for PlexPass Features                          | <ID, right-click profile>            |
-| TC_DISCORD_CHANNEL_NAME         | Channel name for updates                                       | "Tautulli Status"                    |
-| TC_USE_EMBEDS                   | Use embedded messages rather than regular text chat            | "True"                               |
-| TC_ALLOW_ANALYTICS              | Allow Anonymous Crash Analytics?                               | "True"                               |                          |                                                                               |                                       
-| TZ                              | Timezone that your server is in                                | "America/New_York"                   |
+After copying and editing your ``config.py`` file, build the container with:
+	``docker build -t tauticord .``
+Run the container with ``docker run tauticord``
 
 # Analytics
 Tauticord uses Google Analytics to collect statistics such as common errors that will help with future development.
@@ -102,51 +81,3 @@ Tauticord uses Google Analytics to collect statistics such as common errors that
 
 # To come
 This bot is still a work in progress. If you have any ideas for improving or adding to Tauticord, please do a pull request.
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-### Contributors
-
-<table>
-<tr>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/nwithan8>
-            <img src=https://avatars.githubusercontent.com/u/17054780?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Nate Harris/>
-            <br />
-            <sub style="font-size:14px"><b>Nate Harris</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/TomW1605>
-            <img src=https://avatars.githubusercontent.com/u/17092573?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Thomas White/>
-            <br />
-            <sub style="font-size:14px"><b>Thomas White</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/twilsonco>
-            <img src=https://avatars.githubusercontent.com/u/7284371?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Tim Wilson/>
-            <br />
-            <sub style="font-size:14px"><b>Tim Wilson</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 75.0; height: 75.0">
-        <a href=https://github.com/Yoruio>
-            <img src=https://avatars.githubusercontent.com/u/38411921?v=4 width="50;"  style="border-radius:50%;align-items:center;justify-content:center;overflow:hidden;padding-top:10px" alt=Roy Du/>
-            <br />
-            <sub style="font-size:14px"><b>Roy Du</b></sub>
-        </a>
-    </td>
-</tr>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->

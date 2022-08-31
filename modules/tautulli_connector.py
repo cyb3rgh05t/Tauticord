@@ -1,7 +1,7 @@
 from typing import List, Tuple, Union
 
 import discord
-import tautulli
+from tautulli import RawAPI
 
 import modules.statics as statics
 from modules import utils
@@ -46,18 +46,6 @@ class Activity:
             return utils.human_bitrate(float(value) * 1024)
         except:
             return None
-
-    @property
-    def wan_bandwidth(self):
-        total = self._data.get('total_bandwidth', 0)
-        lan = self._data.get('lan_bandwidth', 0)
-        value = total - lan
-        try:
-            return utils.human_bitrate(float(value) * 1024)
-        except:
-            return None
-
-
 
     @property
     def message(self):
@@ -283,7 +271,7 @@ class TautulliConnector:
                  time_settings: dict):
         self.base_url = base_url
         self.api_key = api_key
-        self.api = tautulli.RawAPI(base_url=base_url, api_key=api_key)
+        self.api = RawAPI(base_url=base_url, api_key=api_key)
         self.terminate_message = terminate_message
         self.analytics = analytics
         self.use_embeds = use_embeds
@@ -357,7 +345,7 @@ class TautulliConnector:
         library_id = self.get_library_id(library_name=library_name)
         if not library_id:
             return None
-        return self.api.get_library(section_id=library_id)
+        return self.api.get_library_media_info(section_id=library_id)
 
     def get_library_item_count(self, library_name: str):
         library_info = self.get_library_info(library_name=library_name)
