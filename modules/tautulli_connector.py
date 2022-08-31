@@ -48,18 +48,6 @@ class Activity:
             return None
 
     @property
-    def wan_bandwidth(self):
-        total = self._data.get('total_bandwidth', 0)
-        lan = self._data.get('lan_bandwidth', 0)
-        value = total - lan
-        try:
-            return utils.human_bitrate(float(value) * 1024)
-        except:
-            return None
-
-
-
-    @property
     def message(self):
         overview_message = ""
         if self.stream_count > 0:
@@ -197,7 +185,7 @@ class Session:
         return statics.session_title_message.format(count=statics.emoji_numbers[session_number - 1],
                                                     icon=self.status_icon, username=self.username,
                                                     media_type_icon=self.type_icon, title=self.title)
-    
+
     def _session_user(self):
         return statics.session_user_message.format(username=self.username)
 
@@ -223,14 +211,14 @@ class TautulliStreamInfo:
             return self._session._session_title(session_number=self._session_number)
         except Exception as title_exception:
             return "Unknown"
+
+    @property
+    def player(self):
+        return self._session._session_player()
     
     @property
     def user(self):
         return self._session._session_user()
-    
-    @property
-    def player(self):
-        return self._session._session_player()
 
     @property
     def details(self):
@@ -359,7 +347,7 @@ class TautulliConnector:
         error(f"Could not get ID for library {library_name}")
         return None
 
-    def get_library_info(self, library_name: str):
+    def get_library_stats(self, library_name: str):
         info(f"Collecting stats about library {library_name}")
         library_id = self.get_library_id(library_name=library_name)
         if not library_id:
@@ -367,9 +355,7 @@ class TautulliConnector:
         return self.api.get_library(section_id=library_id)
 
     def get_library_item_count(self, library_name: str):
-        library_info = self.get_library_info(library_name=library_name)
-        if not library_info:
+        stats = self.get_library_stats(library_name=library_name)
+        if not stats:
             return 0
-        if library_info.get('section_type') == 'artist':
-            return library_info.get('child_count')  # child_count is the number of tracks
-        return library_info.get('count', 0)
+        return stats.get('count', 0)

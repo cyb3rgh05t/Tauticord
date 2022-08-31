@@ -121,7 +121,7 @@ class DiscordConnector:
         self.tautulli = tautulli_connector
         self.analytics = analytics
         self.use_embeds = use_embeds
-        self.client = discord.Client(intents=discord.Intents.default())
+        self.client = discord.Client()
         self.on_ready = self.client.event(self.on_ready)
 
     async def on_ready(self):
@@ -245,7 +245,7 @@ class DiscordConnector:
             if channel.name.startswith(starting_channel_name):
                 return channel
         try:
-            guild = self.client.get_guild(self.guild_id)  # stupid positional-only parameters
+            guild = self.client.get_guild(id=self.guild_id)
             if channel_type == 'voice':
                 return await guild.create_voice_channel(name=starting_channel_name)
             else:
@@ -259,7 +259,7 @@ class DiscordConnector:
                 return channel
         error(f"Could not load {channel_name} channel. Attempting to create...")
         try:
-            guild = self.client.get_guild(self.guild_id)  # stupid positional-only parameters
+            guild = self.client.get_guild(id=self.guild_id)
             if channel_type == 'voice':
                 return await guild.create_voice_channel(name=channel_name)
             else:
