@@ -1,6 +1,6 @@
 py-cord
 objectrest==1.1.1
 asyncio~=3.4.3
-tautulli==2.1.0.294
+tautulli==3.0.1.2103
 confuse~=1.7.0
 pytz==2021.1
