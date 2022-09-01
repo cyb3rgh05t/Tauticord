@@ -52,13 +52,13 @@ class Activity:
         overview_message = ""
         if self.stream_count > 0:
             overview_message += statics.sessions_message.format(stream_count=self.stream_count,
-                                                                word=utils.make_plural(word='stream',
+                                                                word=utils.make_plural(word='Stream',
                                                                                        count=self.stream_count))
             if self.transcode_count > 0:
-                overview_message += f" ({statics.transcodes_message.format(transcode_count=self.transcode_count, word=utils.make_plural(word='transcode', count=self.transcode_count))})"
+                overview_message += f" ({statics.transcodes_message.format(transcode_count=self.transcode_count, word=utils.make_plural(word='Transcode', count=self.transcode_count))})"
 
         if self.total_bandwidth:
-            overview_message += f" | {statics.bandwidth_message.format(bandwidth=self.total_bandwidth)}"
+            overview_message += f" @ {statics.bandwidth_message.format(bandwidth=self.total_bandwidth)}"
 
         return overview_message
 
