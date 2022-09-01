@@ -59,8 +59,6 @@ class Activity:
 
         if self.total_bandwidth:
             overview_message += f" | {statics.bandwidth_message.format(bandwidth=self.total_bandwidth)}"
-            if self.lan_bandwidth:
-                overview_message += f" {statics.lan_bandwidth_message.format(bandwidth=self.lan_bandwidth)}"
 
         return overview_message
 
