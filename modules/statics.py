@@ -11,9 +11,9 @@ switcher = {
 
 media_type_icons = {'episode': '📺', 'track': '🎧', 'movie': '🎞', 'clip': '🎬', 'photo': '🖼', 'live': '📡'}
 
-sessions_message = """{stream_count} {word}"""
-transcodes_message = """{transcode_count} {word}"""
-bandwidth_message = """🌐 {bandwidth}"""
+sessions_message = """▶️ {stream_count} {word}"""
+transcodes_message = """▶️ {transcode_count} {word}"""
+bandwidth_message = """{bandwidth}"""
 lan_bandwidth_message = """(🏠 {bandwidth})"""
 
 session_title_message = """{count} | {icon} {media_type_icon} {title}"""
