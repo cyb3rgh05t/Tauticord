@@ -12,7 +12,7 @@ switcher = {
 media_type_icons = {'episode': '📺', 'track': '🎧', 'movie': '🎞', 'clip': '🎬', 'photo': '🖼', 'live': '📡'}
 
 sessions_message = """▶️ {stream_count} {word}"""
-transcodes_message = """▶️ {transcode_count} {word}"""
+transcodes_message = """{transcode_count} {word}"""
 bandwidth_message = """{bandwidth}"""
 lan_bandwidth_message = """(🏠 {bandwidth})"""
 
