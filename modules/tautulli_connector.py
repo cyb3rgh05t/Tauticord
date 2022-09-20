@@ -196,6 +196,9 @@ class Session:
         return statics.session_title_message.format(count=statics.emoji_numbers[session_number - 1],
                                                     icon=self.status_icon, username=self.username,
                                                     media_type_icon=self.type_icon, title=self.title)
+    
+    def _session_user(self):
+        return statics.session_user_message.format(username=self.username)
 
     def _session_player(self) -> str:
         return statics.session_player_message.format(product=self.product, player=self.player)
@@ -223,6 +226,10 @@ class TautulliStreamInfo:
     @property
     def player(self) -> str:
         return self._session._session_player()
+    
+    @property
+    def user(self):
+        return self._session._session_user()
 
     @property
     def details(self) -> str:
@@ -235,7 +242,7 @@ class TautulliStreamInfo:
     @property
     def body(self) -> str:
         try:
-            return f"{self.player}\n{self.details}\n{self.progress}"
+            return f"{self.user}\n{self.player}\n{self.details}\n{self.progress}"
         except Exception as body_exception:
             error(body_exception)
             return f"Could not display data for session {self._session_number}"
