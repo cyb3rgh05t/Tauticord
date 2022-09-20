@@ -98,6 +98,10 @@ class TautulliConfig(ConfigSection):
     def _voice_channels(self) -> ConfigSection:
         return self._customization._get_subsection(key="VoiceChannels")
 
+    @property
+    def voice_channel_category_name(self) -> str:
+        return self._voice_channels._get_value(key="CategoryName", default="Tautulli Stats",
+                                               env_name_override="TC_VC_CATEGORY_NAME")
 
     @property
     def display_stream_count(self) -> bool:
@@ -145,7 +149,7 @@ class TautulliConfig(ConfigSection):
     @property
     def voice_channel_settings(self):
         return {
-            #'category_name': self.voice_channel_category_name,
+            'category_name': self.voice_channel_category_name,
             'count': self.display_stream_count,
             'transcodes': self.display_transcode_count,
             'bandwidth': self.display_bandwidth,
@@ -174,9 +178,11 @@ class DiscordConfig(ConfigSection):
         return int(value)
 
     @property
-    def owner_id(self) -> int:
-        value = self._connection._get_value(key="OwnerID", env_name_override="TC_DISCORD_OWNER_ID")
-        return int(value)
+    def admin_ids(self) -> List[int]:
+        ids = self._connection._get_value(key="AdminIDs", default=[], env_name_override="TC_DISCORD_ADMIN_IDS")
+        if isinstance(ids, str):
+            return [int(i) for i in ids.split(",")]
+        return [int(i) for i in ids]
 
     @property
     def channel_name(self) -> str:
