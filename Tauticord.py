@@ -2,6 +2,7 @@
 # All rights reserved.
 # Tauticord is released as-is under the "GNU General Public License".
 # Please see the LICENSE file that should have been included as part of this package.
+from pathlib import Path
 
 from modules.analytics import GoogleAnalytics
 import modules.discord_connector as discord
@@ -9,7 +10,7 @@ import modules.tautulli_connector as tautulli
 from modules import config_parser
 from modules.logs import *
 
-config = config_parser.Config(app_name="Tauticord", config_path="config.yaml")
+config = config_parser.Config(app_name="Tauticord", config_path=f"{Path(Path(__file__).parent / 'config.yaml')}")
 
 analytics = GoogleAnalytics(analytics_id='UA-174268200-2',
                             anonymous_ip=True,
@@ -32,6 +33,7 @@ if __name__ == '__main__':
                                  guild_id=config.discord.server_id,
                                  admin_ids=config.discord.admin_ids,
                                  refresh_time=config.tautulli.refresh_interval,
+                                 library_refresh_time=config.tautulli.library_refresh_interval,
                                  tautulli_channel_name=config.discord.channel_name,
                                  tautulli_connector=t,
                                  analytics=analytics,
