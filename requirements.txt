@@ -3,5 +3,5 @@ objectrest~=1.2
 asyncio~=3.4
 tautulli==3.*
 confuse~=1.7
-pytz~=2022.1
+pytz~=2022.2
 PyYAML~=6.0
