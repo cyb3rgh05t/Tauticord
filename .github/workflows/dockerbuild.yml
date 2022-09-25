@@ -2,9 +2,11 @@ name: Build Multi Stage Docker Image
 on:
   push:
     branches-ignore:
-      - "dependabot/**"
-  schedule:
-    - cron: "0 5 * * *"
+      - 'dependabot/**'
+    paths-ignore:
+      - ".github/**"
+      - "LICENSE"
+      - "**.md"
 
 jobs:
   GHRC:
