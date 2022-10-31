@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3.10
 
 LABEL maintainer=cyb3rgh05t
 LABEL org.opencontainers.image.source https://github.com/cyb3rgh05t/tauticord
