@@ -5,4 +5,3 @@ confuse~=1.7
 pytz~=2022.1
 PyYAML~=6.0
 objectrest
-
